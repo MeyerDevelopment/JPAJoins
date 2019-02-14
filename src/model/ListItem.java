@@ -48,7 +48,7 @@ public class ListItem {
 	public void setPrice(double price) {
 		this.price = price;
 	}
-	public double setPrice() {
+	public double getPrice() {
 		return price;
 	}
 	public String returnItemDetails( ) {
