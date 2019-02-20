@@ -32,7 +32,7 @@ public class addItemsForListServlet extends HttpServlet {
 		if(dao.showAllItems().isEmpty()){
 		request.setAttribute("allItems", " ");
 		}
-		getServletContext().getRequestDispatcher("/newlist.jsp").forward(request, response);
+		getServletContext().getRequestDispatcher("/new-list.jsp").forward(request, response);
 	}
 
 	/**

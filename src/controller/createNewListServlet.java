@@ -43,24 +43,19 @@ public class createNewListServlet extends HttpServlet {
 		String shopName = request.getParameter("shopName");
 		LocalDate ld;
 		try {
-			ld = LocalDate.of(Integer.parseInt(year),
-					Integer.parseInt(month), Integer.parseInt(day));
+			ld = LocalDate.of(Integer.parseInt(year), Integer.parseInt(month), Integer.parseInt(day));
 		}catch(NumberFormatException ex) {
 			ld = LocalDate.now();
 		}
-		String[] selectedItems =
-		request.getParameterValues("allItemsToAdd");
-		List<ListItem> selectedItemsInList = new
-		ArrayList<ListItem>();
+		String[] selectedItems = request.getParameterValues("allItemsToAdd");
+		List<ListItem> selectedItemsInList = new ArrayList<ListItem>();
 		//make sure something was selected – otherwise we get a null pointer exception
-		if (selectedItems != null && selectedItems.length > 0)
-		{
-		for(int i = 0; i<selectedItems.length; i++) {
-		System.out.println(selectedItems[i]);
-		ListItem c =
-		lih.searchForItemById(Integer.parseInt(selectedItems[i]));
-		selectedItemsInList.add(c);
-		}
+		if (selectedItems != null && selectedItems.length > 0) {
+			for(int i = 0; i<selectedItems.length; i++) {
+				System.out.println(selectedItems[i]);
+				ListItem c = lih.searchForItemById(Integer.parseInt(selectedItems[i]));
+				selectedItemsInList.add(c);
+			}
 		}
 		Shop shop = new Shop(shopName);
 		ListDetails sld = new ListDetails(listName, ld,	shop);

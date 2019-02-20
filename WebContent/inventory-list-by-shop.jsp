@@ -5,10 +5,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Shopping Lists</title>
+<title>Shop Lists</title>
 </head>
 <body>
-<form method = "post" action = "">
+<form method = "post" action = "listNavigationServlet">
 <table>
 <c:forEach items="${requestScope.allLists}" var="currentlist">
 <tr>
@@ -19,7 +19,7 @@
 ${currentlist.shop.shopName}</td></tr>
  <c:forEach var = "listVal" items = "${currentlist.listOfItems}">
  <tr><td></td><td colspan="3">
- ${listVal.store}, ${listVal.item}
+ ${listVal.item}, ${listVal.price}
  </td>
  </tr>
  </c:forEach>

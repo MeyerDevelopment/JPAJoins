@@ -34,7 +34,7 @@ public class viewAllListsServlet extends HttpServlet {
 		List<ListDetails> abc = slh.getLists();
 		request.setAttribute("allLists", abc);
 		if(abc.isEmpty()){
-		request.setAttribute("allLists", " ");
+			request.setAttribute("allLists", " ");
 		}
 		getServletContext().getRequestDispatcher("/inventory-list-by-shop.jsp").forward(request, response);
 	}

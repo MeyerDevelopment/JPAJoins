@@ -27,20 +27,22 @@ public class ListDetails {
 	private String listName;
 	@Column(name="INV_DATE")
 	private LocalDate invDate;
-	@ManyToOne
+	@ManyToOne(cascade=CascadeType.PERSIST)
 	@JoinColumn(name="SHOP_ID")
 	private Shop shop;
 	@OneToMany(cascade=CascadeType.MERGE, fetch=FetchType.EAGER)
 	@JoinTable
-	 (name="ITEMS_ON_LIST",
-	 joinColumns={ @JoinColumn(name="LIST_ID", referencedColumnName="LIST_ID") },
-	 inverseJoinColumns={ @JoinColumn(name="ITEM_ID", referencedColumnName="ID", unique=true) }
+	 (
+			 name="ITEMS_ON_LIST",
+			 joinColumns={ @JoinColumn(name="LIST_ID", referencedColumnName="LIST_ID") },
+			 inverseJoinColumns={ @JoinColumn(name="ITEM_ID", referencedColumnName="ID", unique=true) }
 	 )
 	private List<ListItem> listOfItems;
 	public int getId() {
 		return id;
 	}
 	public ListDetails() {	
+		super();
 	}
 	public ListDetails(int id, String listName, LocalDate invDate, Shop shop, List<ListItem> listOfItems) {
 		this.id = id;
